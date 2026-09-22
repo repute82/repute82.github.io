@@ -11,15 +11,21 @@
     }
     body {
       display: flex;
+      /* 그림과 글자를 위아래로 쌓기 위해 세로 방향으로 배치합니다 */
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 16px;
+      padding: 24px;
+      box-sizing: border-box;
       background: #ffffff;
       color: #222222;
       font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
     }
     h1 {
       margin: 0;
-      font-size: clamp(3rem, 15vw, 12rem);
+      /* 그림이 위에 있으므로 글자 크기를 화면에 맞게 조절합니다 */
+      font-size: clamp(2rem, 8vw, 4.5rem);
       font-weight: 700;
     }
     /* 링크의 기본 파란색·밑줄을 없애고 글자색을 그대로 씁니다 */
@@ -31,9 +37,29 @@
     h1 a:hover {
       text-decoration: underline;
     }
+
+    /* ===== 다이어그램 그림 ===== */
+    .diagram {
+      display: block;            /* 그림 아래 생기는 미세한 빈틈을 없앱니다 */
+      width: 100%;               /* 화면이 좁아지면 같이 줄어듭니다 */
+      max-width: 1000px;         /* 화면이 넓어도 이 이상 커지지 않습니다 */
+      height: auto;              /* 가로에 맞춰 세로가 자동 계산되어 비율이 안 깨집니다 */
+    }
+    /* 그림을 누르면 원본 크기로 따로 열립니다 */
+    .diagram-link:hover .diagram {
+      opacity: 0.9;
+    }
   </style>
 </head>
 <body>
+
+  <!-- SAO Lab 연구 활동 다이어그램. 누르면 원본 크기로 크게 볼 수 있습니다 -->
+  <a class="diagram-link" href="images/SAOLab_Activities_Diagram.svg" target="_blank" rel="noopener">
+    <img class="diagram"
+         src="images/SAOLab_Activities_Diagram.svg"
+         alt="SAO Lab 연구 활동 다이어그램. 가운데 허브는 Data·AI·Simulation을 활용해 분석하고 최적화한다는 연구실 정체성을 나타내고, 둘레에는 Modeling &amp; Simulation, Deep Learning, RL &amp; Optimization, Data Analytics 네 가지 연구 방법이, 네 모서리에는 Railway Systems, Crowd Safety, Urban Mobility, Manufacturing 네 가지 응용 분야가 있으며, 아래쪽 띠는 Descriptive에서 Prescriptive로 이어지는 연구 범위를 보여 줍니다.">
+  </a>
+
   <!-- 누르면 이름 페이지(name.html)로 이동합니다 -->
   <h1><a href="name.html">안녕하세요</a></h1>
 </body>
